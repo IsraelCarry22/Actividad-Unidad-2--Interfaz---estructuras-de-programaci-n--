@@ -18,33 +18,32 @@ $ApellidoMaterno = $_POST["apellido_materno"];
 $Correo = $_POST["correo"];
 $CURP = $_POST["curp"];
 $Telefono = $_POST["telefono"];
-$tipoBeca = $_POST["tipoBeca"];
-$ingresos = $_POST["ingresos"];
-$promedio = $_POST["promedio"];
+$TipoBeca = $_POST["tipoBeca"];
+$Ingresos = $_POST["ingresos"];
+$Promedio = $_POST["promedio"];
 
-if (!empty($Nombre) && !empty($ApellidoPaterno) && !empty($Correo) && !empty($tipoBeca)) {
-    try {
-        $sql = "INSERT INTO becas (nombre, apellido_paterno, apellido_materno, correo, curp, telefono, tipo_beca, ingresos, promedio, estado) 
-                VALUES (:nombre, :apellido_paterno, :apellido_materno, :correo, :curp, :telefono, :tipo_beca, :ingresos, :promedio, 'Pendiente')";
-        
-        $stmt = $conn->prepare($sql);
-        $stmt->execute([
-            ":nombre" => $Nombre,
-            ":apellido_paterno" => $ApellidoPaterno,
-            ":apellido_materno" => $ApellidoMaterno,
-            ":correo" => $Correo,
-            ":curp" => $CURP,
-            ":telefono" => $Telefono,
-            ":tipo_beca" => $tipoBeca,
-            ":ingresos" => $ingresos,
-            ":promedio" => $promedio
-        ]);
-    } catch (PDOException $e) {
-        die("Error al insertar datos: " . $e->getMessage());
-    }
+try {
+    $sql = "INSERT INTO dbo.Registro (nombre, apellido_paterno, apellido_materno, correo, curp, telefono, tipo_beca, ingresos, promedio, estado) 
+            VALUES (:nombre, :apellido_paterno, :apellido_materno, :correo, :curp, :telefono, :tipo_beca, :ingresos, :promedio, 'Pendiente')";
+    
+    $stmt = $conn->prepare($sql);
+    $stmt->execute([
+        ":nombre" => $Nombre,
+        ":apellido_paterno" => $ApellidoPaterno,
+        ":apellido_materno" => $ApellidoMaterno,
+        ":correo" => $Correo,
+        ":curp" => $CURP,
+        ":telefono" => $Telefono,
+        ":tipo_beca" => $TipoBeca,
+        ":ingresos" => $Ingresos,
+        ":promedio" => $Promedio
+    ]);
+} catch (PDOException $e) {
+    die("Error al insertar datos: " . $e->getMessage());
 }
 
-$sql = "SELECT id, curp, nombre, apellido_paterno, apellido_materno, tipo_beca, estado FROM becas";
+
+$sql = "SELECT id, curp, nombre, apellido_paterno, apellido_materno, promedio, tipo_beca, estado FROM Registro";
 $solicitudes = $conn->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 ?>
 

@@ -1,12 +1,11 @@
 <?php
-    $Nombre = $_GET["nombre"];
-    $ApellidoPaterno = $_GET["apellido_paterno"];
-    $ApellidoMaterno = $_GET["apellido_materno"];
-    $Correo = $_GET["correo"];
-    $CURP = $_GET["curp"];
-    $Telefono = $_GET["telefono"];
+    $Nombre = $_POST['nombre'];
+    $ApellidoPaterno = $_POST['apellido_paterno'];
+    $ApellidoMaterno = $_POST['apellido_materno'];
+    $Correo = $_POST['correo'];
+    $CURP = $_POST['curp'];
+    $Telefono = $_POST['telefono'];
 ?>
-
 
 <!DOCTYPE html>
 <html lang="es">
@@ -40,12 +39,12 @@
                 <input type="number" class="form-control" id="promedio" name="promedio" step="0.1" required>
             </div>
 
-            <input type="hidden" class="form-control" id="nombre" value="<?php echo htmlspecialchars($Nombre, ENT_QUOTES, 'UTF-8'); ?>">
-            <input type="hidden" class="form-control" id="apellido_paterno" value="<?php echo htmlspecialchars($ApellidoPaterno, ENT_QUOTES, 'UTF-8'); ?>">
-            <input type="hidden" class="form-control" id="apellido_materno" value="<?php echo htmlspecialchars($ApellidoMaterno, ENT_QUOTES, 'UTF-8'); ?>">
-            <input type="hidden" class="form-control" id="correo" value="<?php echo htmlspecialchars($Correo, ENT_QUOTES, 'UTF-8'); ?>">
-            <input type="hidden" class="form-control" id="curp" pattern="[A-Z0-9]{10,18}" value="<?php echo htmlspecialchars($CURP, ENT_QUOTES, 'UTF-8'); ?>">
-            <input type="hidden" class="form-control" id="telefono"  value="<?php echo htmlspecialchars($Telefono, ENT_QUOTES, 'UTF-8'); ?>">
+            <input type="hidden" class="form-control" id="nombre" name="nombre" value="<?php echo htmlspecialchars($Nombre, ENT_QUOTES, 'UTF-8'); ?>">
+            <input type="hidden" class="form-control" id="apellido_paterno" name="apellido_paterno" value="<?php echo htmlspecialchars($ApellidoPaterno, ENT_QUOTES, 'UTF-8'); ?>">
+            <input type="hidden" class="form-control" id="apellido_materno" name="apellido_materno" value="<?php echo htmlspecialchars($ApellidoMaterno, ENT_QUOTES, 'UTF-8'); ?>">
+            <input type="hidden" class="form-control" id="correo" name="correo" value="<?php echo htmlspecialchars($Correo, ENT_QUOTES, 'UTF-8'); ?>">
+            <input type="hidden" class="form-control" id="curp" name="curp" pattern="[A-Z0-9]{10,18}" value="<?php echo htmlspecialchars($CURP, ENT_QUOTES, 'UTF-8'); ?>">
+            <input type="hidden" class="form-control" id="telefono" name="telefono"  value="<?php echo htmlspecialchars($Telefono, ENT_QUOTES, 'UTF-8'); ?>">
             <button type="submit" class="btn btn-success w-100">Solicitar Beca</button>
         </form>
     </div>
